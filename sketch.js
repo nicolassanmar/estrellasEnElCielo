@@ -8,9 +8,9 @@ var maxVolume = -20;
 function preload() {
   autoFilter = new Tone.AutoFilter("4n").toMaster().start();
   autoFilter.wet.value = 0.2;
-  backgroundS = new Tone.Player("background.wav").connect(autoFilter);
-  hardS = new Tone.Player("hardSynth.wav").toMaster();
-  leadS = new Tone.Player("lead.wav").toMaster();
+  backgroundS = new Tone.Player("background.ogg").connect(autoFilter);
+  hardS = new Tone.Player("hardSynth.ogg").toMaster();
+  leadS = new Tone.Player("lead.ogg").toMaster();
 
   loadedFont = loadFont("SpaceMono-Regular.ttf");
 
@@ -78,14 +78,14 @@ function draw() {
   drag = map(mouseY,0,windowHeight, 0.7,0.05);
 
 
-  if (started && maxVolume < -0.2){
+  if (started && maxVolume < -3){
     console.log(maxVolume);
     maxVolume += 0.2;
     backgroundS.volume.value = maxVolume;
   }
   if (ableToModify){
-    leadS.volume.value = map(mouseX, 0, windowWidth * 0.8, -14, maxVolume, true);
-    hardS.volume.value = map(mouseY, 0, windowHeight * 0.8, maxVolume, -14, true);
+    leadS.volume.value = map(mouseX, 0, windowWidth * 0.8, -16, maxVolume, true);
+    hardS.volume.value = map(mouseY, 0, windowHeight * 0.8, maxVolume, -16, true);
   }
   if (!loaded) {
     loaded =
