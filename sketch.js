@@ -160,6 +160,8 @@ function playf() {
   if (loaded) {
     Tone.Transport.start();
     loopBeat.start(0);    
+    Tone.start();
+    console.log("click");
   }
 }
 
